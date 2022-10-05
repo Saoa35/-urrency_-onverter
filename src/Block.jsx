@@ -1,6 +1,6 @@
 import React from 'react';
 
-const defaultCurrencies = ['UA', 'USD', 'EUR', 'GBP'];
+const defaultCurrencies = ['UAH', 'USD', 'EUR', 'PLN'];
 
 export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => (
   <div className="block">
