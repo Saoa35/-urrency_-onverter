@@ -33,8 +33,8 @@ function App() {
 
   return (
     <div className="App">
-      <Block value={0} currency={fromCurrency} onChangeCurrency={(cur) => setFromCurrency(cur)} />
-      <Block value={0} currency={toCurrency} onChangeCurrency={(cur) => setToCurrency(cur)} />
+      <Block value={fromPrice} currency={fromCurrency} onChangeCurrency={(cur) => setFromCurrency(cur)} onChangeValue={onChangeFromPrice} />
+      <Block value={toPrice} currency={toCurrency} onChangeCurrency={(cur) => setToCurrency(cur)} onChangeValue={onChangeToPrice} />
     </div>
   );
 }
