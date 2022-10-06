@@ -35,10 +35,9 @@ function App() {
     setFromPrice(result);
   }
 
-  const onChangeFromCurency = (cur) => {
-    setFromCurrency(cur);
+  useEffect(() => {
     onChangeFromPrice(fromPrice);
-  }
+  }, [fromCurrency, fromPrice]);
 
   return (
     <div className="App">
