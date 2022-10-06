@@ -21,19 +21,19 @@ function App() {
         onChangeToPrice(1);
       })
       .catch(err => {console.log(err.mesage)});
-  });
+  }, []);
 
   const onChangeFromPrice = (value) => {
     const price = value / ratesRef.current[fromCurrency];
     const result = price * ratesRef.current[toCurrency];
     setFromPrice(value);
-    setToPrice(result);
+    setToPrice(result.toFixed(3));
   }
 
   const onChangeToPrice = (value) => {
     const result = (ratesRef.current[fromCurrency] / ratesRef.current[toCurrency]) * value;
     setToPrice(value);
-    setFromPrice(result);
+    setFromPrice(result.toFixed(3));
   }
 
   useEffect(() => {
