@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Block } from "./Block";
 import './index.scss';
 
@@ -11,13 +11,14 @@ function App() {
   const [fromPrice, setFromPrice] = useState(0);
   const [toPrice, setToPrice] = useState(1);
 
-  const [rates, setRates] = useState({});
+  const ratesRef = useRef({})
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
       .then(json => {
         setRates(json.rates);
+        onChangeToPrice(1);
       })
       .catch(err => {console.log(err.mesage)});
   });
