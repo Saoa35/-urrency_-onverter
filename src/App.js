@@ -24,17 +24,35 @@ function App() {
   });
 
   const onChangeFromPrice = (value) => {
+    const price = value / rates[fromCurrency];
+    const result = price * rates[toCurrency];
     setFromPrice(value);
+    setToPrice(result);
   }
 
   const onChangeToPrice = (value) => {
+    const result = (rates[fromCurrency] / rates[toCurrency]) * value;
     setToPrice(value);
+    setFromPrice(result);
+  }
+
+  const onChangeFromCurency = (cur) => {
+    setFromCurrency(cur)
   }
 
   return (
     <div className="App">
-      <Block value={fromPrice} currency={fromCurrency} onChangeCurrency={(cur) => setFromCurrency(cur)} onChangeValue={onChangeFromPrice} />
-      <Block value={toPrice} currency={toCurrency} onChangeCurrency={(cur) => setToCurrency(cur)} onChangeValue={onChangeToPrice} />
+
+      <Block value={fromPrice} 
+      currency={fromCurrency} 
+      onChangeCurrency={onChangeFromCurency} 
+      onChangeValue={onChangeFromPrice} />
+
+      <Block value={toPrice} 
+      currency={toCurrency} 
+      onChangeCurrency={(cur) => setToCurrency(cur)} 
+      onChangeValue={onChangeToPrice} />
+
     </div>
   );
 }
