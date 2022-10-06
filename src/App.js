@@ -18,7 +18,6 @@ function App() {
       .then(res => res.json())
       .then(json => {
         setRates(json.rates);
-        // console.log(json.rates);
       })
       .catch(err => {console.log(err.mesage)});
   });
@@ -37,7 +36,8 @@ function App() {
   }
 
   const onChangeFromCurency = (cur) => {
-    setFromCurrency(cur)
+    setFromCurrency(cur);
+    onChangeFromPrice(fromPrice);
   }
 
   return (
