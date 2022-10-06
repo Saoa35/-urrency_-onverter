@@ -9,7 +9,7 @@ function App() {
   const [fromCurrency, setFromCurrency] = useState('UAH');
   const [toCurrency, setToCurrency] = useState('USD');
   const [fromPrice, setFromPrice] = useState(0);
-  const [toPrice, setToPrice] = useState(0);
+  const [toPrice, setToPrice] = useState(1);
 
   const [rates, setRates] = useState({});
 
@@ -37,20 +37,28 @@ function App() {
 
   useEffect(() => {
     onChangeFromPrice(fromPrice);
-  }, [fromCurrency, fromPrice]);
+  }, [fromCurrency]);
+
+  useEffect(() => {
+    onChangeToPrice(toPrice);
+  }, [toCurrency]);
+
+
 
   return (
     <div className="App">
 
-      <Block value={fromPrice} 
-      currency={fromCurrency} 
-      onChangeCurrency={onChangeFromCurency} 
-      onChangeValue={onChangeFromPrice} />
+      <Block 
+        value={fromPrice} 
+        currency={fromCurrency} 
+        onChangeCurrency={setFromCurrency} 
+        onChangeValue={onChangeFromPrice} />
 
-      <Block value={toPrice} 
-      currency={toCurrency} 
-      onChangeCurrency={(cur) => setToCurrency(cur)} 
-      onChangeValue={onChangeToPrice} />
+      <Block 
+        value={toPrice} 
+        currency={toCurrency} 
+        onChangeCurrency={(cur) => setToCurrency(cur)} 
+        onChangeValue={onChangeToPrice} />
 
     </div>
   );
