@@ -11,27 +11,27 @@ function App() {
   const [fromPrice, setFromPrice] = useState(0);
   const [toPrice, setToPrice] = useState(1);
 
-  const ratesRef = useRef({})
+  const ratesRef = useRef({});
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
       .then(json => {
-        setRates(json.rates);
+        ratesRef.current = json.rates;  
         onChangeToPrice(1);
       })
       .catch(err => {console.log(err.mesage)});
   });
 
   const onChangeFromPrice = (value) => {
-    const price = value / rates[fromCurrency];
-    const result = price * rates[toCurrency];
+    const price = value / ratesRef.current[fromCurrency];
+    const result = price * ratesRef.current[toCurrency];
     setFromPrice(value);
     setToPrice(result);
   }
 
   const onChangeToPrice = (value) => {
-    const result = (rates[fromCurrency] / rates[toCurrency]) * value;
+    const result = (ratesRef.current[fromCurrency] / ratesRef.current[toCurrency]) * value;
     setToPrice(value);
     setFromPrice(result);
   }
