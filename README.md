@@ -1,1 +1,1 @@
-Currency converter 
+Currency converter. Stack: HTML, CSS, JS 
